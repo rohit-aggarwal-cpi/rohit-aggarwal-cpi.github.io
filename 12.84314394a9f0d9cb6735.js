@@ -668,7 +668,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             }
             return data;
         };
-        ManageEmployeeComponent.prototype.__sanitizeUpdate = function (data) {
+        ManageEmployeeComponent.prototype.__sanitizeUpdate = function (data, original_data) {
+            if (data.name) {
+                if (!data.name.first) {
+                    data.name.first = original_data.name.first;
+                }
+                if (!data.name.last) {
+                    data.name.last = original_data.name.last;
+                }
+                if (data.name.middle === original_data.name.middle) {
+                    data.name.middle = original_data.name.middle;
+                }
+            }
             if (data.name && lodash_1.isEmpty(data.name.middle)) {
                 data.name.middle = null;
             }
@@ -680,7 +691,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             if (this.employee_id) {
                 var employee_data = utility_1.default.compare(this.original_employee, this.employee);
                 if (employee_data !== undefined) {
-                    employee_data = this.__sanitizeUpdate(employee_data);
+                    employee_data = this.__sanitizeUpdate(employee_data, this.original_employee);
+                    if (Object.keys(employee_data).length === 0) {
+                        return;
+                    }
                     this.employeeService.putEmployee(this.employee_id, employee_data)
                         .then(function (response) {
                         _this.successModal.show('/employee');
@@ -750,6 +764,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     }
                     self.super_admins = response.users;
                 });
+                dataPromises.push(dataPromise);
                 Promise.all(dataPromises).then(function (response) {
                     var user_ids = [];
                     self.supervisors.forEach(function (user) {
@@ -978,4 +993,4 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /***/ })
 
 }]);
-//# sourceMappingURL=12.bbee0e63a3f727793a54.js.map
+//# sourceMappingURL=12.84314394a9f0d9cb6735.js.map

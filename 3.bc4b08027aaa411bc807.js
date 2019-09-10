@@ -150,6 +150,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         function ConstantsArrayPipe() {
         }
         ConstantsArrayPipe.prototype.transform = function (value, args) {
+            if (typeof value === 'undefined' || value === null) {
+                return [];
+            }
             value = Object.keys(value).map(function (key) {
                 if (!Number.isNaN(Number.parseInt(key))) {
                     if (value[value[key]] !== undefined) {
@@ -234,4 +237,4 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 /***/ })
 
 }]);
-//# sourceMappingURL=3.ca291ade714bab5e3f7a.js.map
+//# sourceMappingURL=3.bc4b08027aaa411bc807.js.map

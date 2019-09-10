@@ -3636,6 +3636,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         function ConstantsArrayPipe() {
         }
         ConstantsArrayPipe.prototype.transform = function (value, args) {
+            if (typeof value === 'undefined' || value === null) {
+                return [];
+            }
             value = Object.keys(value).map(function (key) {
                 if (!Number.isNaN(Number.parseInt(key))) {
                     if (value[value[key]] !== undefined) {
@@ -3870,4 +3873,4 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /***/ })
 
 }]);
-//# sourceMappingURL=5.8537136953306e5f65ea.js.map
+//# sourceMappingURL=5.ab256a87569a2991c9b6.js.map

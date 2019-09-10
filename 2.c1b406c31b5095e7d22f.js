@@ -323,6 +323,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         function ConstantsArrayPipe() {
         }
         ConstantsArrayPipe.prototype.transform = function (value, args) {
+            if (typeof value === 'undefined' || value === null) {
+                return [];
+            }
             value = Object.keys(value).map(function (key) {
                 if (!Number.isNaN(Number.parseInt(key))) {
                     if (value[value[key]] !== undefined) {
@@ -407,4 +410,4 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 /***/ })
 
 }]);
-//# sourceMappingURL=2.48b897fe644dbf5f6e26.js.map
+//# sourceMappingURL=2.c1b406c31b5095e7d22f.js.map

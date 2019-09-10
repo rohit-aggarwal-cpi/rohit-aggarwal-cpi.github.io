@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[7],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[8],{
 
 /***/ "./src/app/config/locales/en.json":
 /*!****************************************!*\
@@ -55,21 +55,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.html":
-/*!*******************************************************************************!*\
-  !*** ./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.html ***!
-  \*******************************************************************************/
+/***/ "./src/app/modules/employee/feedback/add-feedback/add-feedback.component.html":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/add-feedback/add-feedback.component.html ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row\">\n            <div class=\"col-12\">\n\n              <form #compoffForm=\"ngForm\">\n\n                <div class=\"form-group row\">\n\n                  <label class=\"col-3 col-form-label\">Date</label>\n                  <div class=\"col-3 input-group\">\n                    <input type=\"text\" name=\"date\" class=\"form-control\" id=\"date\" [(ngModel)]=\"compoff.date\" bsDatepicker #date=\"bsDatepicker\" [bsConfig]=\"dateConfig\">\n                    <span class=\"input-group-append\">\n                      <button class=\"btn\" (click)=\"date.show()\" [attr.aria-expanded]=\"date.isOpen\">\n                        <i class=\"fa fa-calendar\"></i>\n                      </button>\n                    </span>\n                  </div>\n\n                </div>\n\n                <div class=\"form-group row\">\n                  <label class=\"col-3 col-form-label\">Summary</label>\n                  <div class=\"col-9\">\n                    <textarea name=\"summary\" class=\"form-control\" id=\"summary\" [(ngModel)]=\"compoff.summary\"></textarea>\n                  </div>\n                </div>\n\n              </form>\n\n              <div class=\"form-actions row mt-4\">\n                <div class=\"col-12\">\n                  <button type=\"button\" class=\"btn btn-link pull-right\" routerLink=\"/comp-off\">Cancel</button>\n                  <button [disabled]=\"!compoffForm.valid\" type=\"submit\" class=\"btn btn-primary pull-right\" (click)=\"applyCompOff()\">Apply</button>\n                </div>\n              </div>\n\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-success-modal #successModal title=\"Success!\">\n  <div content>\n    Compensatory-Off Applied Successfully\n  </div>\n</app-success-modal>\n\n<app-error-modal #errorModal title=\"Error!\">\n  <div content>\n    <p>There was an error applying for Compensatory-Off. {{error}}</p>\n    <ul>\n      <li *ngFor=\"let attribute of invalid_attributes\">{{attribute}}</li>\n    </ul>\n  </div>\n</app-error-modal>"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row\">\n            <div class=\"col-12\">\n\n              <form #feedbackForm=\"ngForm\">\n\n                <div class=\"form-group row\">\n                  <label class=\"col-3 col-form-label\">\n                    Feedback <span class=\"required\">*</span>\n                  </label>\n                  <div class=\"col-9\">\n                    <textarea name=\"feedback\" class=\"form-control\" id=\"feedback\" [(ngModel)]=\"feedback.feedback\"></textarea>\n                  </div>\n                </div>\n\n                <div class=\"form-group row\">\n                  <label class=\"col-3 col-form-label\">Anonymous</label>\n                  <div class=\"col-3\">\n                    <div class=\"form-check\">\n                      <input type=\"checkbox\" name=\"anonymous\" class=\"form-check-input\" id=\"anonymous\" value=\"true\"\n                        [(ngModel)]=\"feedback.is_anonymous\">\n                      <label class=\"form-check-label\" for=\"anonymous\">Post feedback anonymously</label>\n                    </div>\n                  </div>\n                </div>\n\n              </form>\n\n              <div class=\"form-actions row mt-4\">\n                <div class=\"col-12\">\n                  <button type=\"button\" class=\"btn btn-link pull-right\" routerLink=\"/employee/feedback\">Cancel</button>\n                  <button [disabled]=\"!feedbackForm.valid\" type=\"submit\" class=\"btn btn-primary pull-right\" (click)=\"postFeedback()\">Post</button>\n                </div>\n              </div>\n\n            </div>\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<app-success-modal #successModal title=\"Success!\">\n  <div content>\n    Feedback posted successfully\n  </div>\n</app-success-modal>\n\n<app-error-modal #errorModal title=\"Error!\">\n  <div content>\n    <p>There was an error posting feedback.</p>\n    <p>{{error}}</p>\n    <ul>\n      <li *ngFor=\"let attribute of invalid_attributes \">{{attribute}}</li>\n    </ul>\n  </div>\n</app-error-modal>"
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.ts":
-/*!*****************************************************************************!*\
-  !*** ./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.ts ***!
-  \*****************************************************************************/
+/***/ "./src/app/modules/employee/feedback/add-feedback/add-feedback.component.ts":
+/*!**********************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/add-feedback/add-feedback.component.ts ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -117,50 +117,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! shared/components/success-modal/success-modal.component */ "./src/app/shared/components/success-modal/success-modal.component.ts"), __webpack_require__(/*! shared/components/error-modal/error-modal.component */ "./src/app/shared/components/error-modal/error-modal.component.ts"), __webpack_require__(/*! ../comp-off.service */ "./src/app/modules/comp-off/comp-off.service.ts"), __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, success_modal_component_1, error_modal_component_1, comp_off_service_1, common_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! modules/employee/feedback/feedback.service */ "./src/app/modules/employee/feedback/feedback.service.ts"), __webpack_require__(/*! shared/components/error-modal/error-modal.component */ "./src/app/shared/components/error-modal/error-modal.component.ts"), __webpack_require__(/*! shared/components/success-modal/success-modal.component */ "./src/app/shared/components/success-modal/success-modal.component.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, feedback_service_1, error_modal_component_1, success_modal_component_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var error_map = {
-        date: 'Date',
-        summary: 'Summary'
+        feedback: 'Feedback'
     };
-    var ApplyCompOffComponent = (function () {
-        function ApplyCompOffComponent(compoffService, datePipe) {
-            this.compoffService = compoffService;
-            this.datePipe = datePipe;
-            this.compoff = new comp_off_service_1.ApplyCompOff();
-            this.dateConfig = {
-                dateInputFormat: 'YYYY-MM-DD',
-                containerClass: 'theme-blue',
-                showWeekNumbers: false,
-                maxDate: new Date()
-            };
+    var AddFeedbackComponent = (function () {
+        function AddFeedbackComponent(feedbackService) {
+            this.feedbackService = feedbackService;
+            this.feedback = new feedback_service_1.Feedback();
         }
-        ApplyCompOffComponent.prototype.ngOnInit = function () {
+        AddFeedbackComponent.prototype.ngOnInit = function () {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
                     return [2];
                 });
             });
         };
-        ApplyCompOffComponent.prototype.__validate = function () {
+        AddFeedbackComponent.prototype.__validate = function () {
             return true;
         };
-        ApplyCompOffComponent.prototype.__sanitizeCompoff = function (compOff) {
-            if (compOff.date !== undefined) {
-                compOff.date = this.datePipe.transform(compOff.date, 'yyyy-MM-dd');
-            }
-            return compOff;
-        };
-        ApplyCompOffComponent.prototype.applyCompOff = function () {
+        AddFeedbackComponent.prototype.postFeedback = function () {
             var _this = this;
             if (this.__validate()) {
-                var compOff = JSON.parse(JSON.stringify(this.compoff));
-                compOff = this.__sanitizeCompoff(compOff);
+                var feedback = JSON.parse(JSON.stringify(this.feedback));
                 this.error = '';
                 this.invalid_attributes = [];
-                this.compoffService.apply(compOff).then(function (data) {
-                    _this.successModal.show('/comp-off');
+                this.feedbackService.postFeedback(feedback).then(function (data) {
+                    _this.successModal.show('/employee/feedback');
                 }).catch(function (err) {
                     _this.error = err.error.message.text;
                     if (err.error.invalid_attributes) {
@@ -177,34 +162,32 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         __decorate([
             core_1.ViewChild('errorModal'),
             __metadata("design:type", error_modal_component_1.ErrorModalComponent)
-        ], ApplyCompOffComponent.prototype, "errorModal", void 0);
+        ], AddFeedbackComponent.prototype, "errorModal", void 0);
         __decorate([
             core_1.ViewChild('successModal'),
             __metadata("design:type", success_modal_component_1.SuccessModalComponent)
-        ], ApplyCompOffComponent.prototype, "successModal", void 0);
-        ApplyCompOffComponent = __decorate([
+        ], AddFeedbackComponent.prototype, "successModal", void 0);
+        AddFeedbackComponent = __decorate([
             core_1.Component({
-                selector: 'app-apply-comp-off',
-                template: __webpack_require__(/*! ./apply-comp-off.component.html */ "./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.html"),
-                encapsulation: core_1.ViewEncapsulation.None,
-                providers: [comp_off_service_1.CompensatoryOffService, common_1.DatePipe]
+                selector: 'app-add-feedback',
+                template: __webpack_require__(/*! ./add-feedback.component.html */ "./src/app/modules/employee/feedback/add-feedback/add-feedback.component.html"),
+                providers: [feedback_service_1.FeedbackService]
             }),
-            __metadata("design:paramtypes", [comp_off_service_1.CompensatoryOffService,
-                common_1.DatePipe])
-        ], ApplyCompOffComponent);
-        return ApplyCompOffComponent;
+            __metadata("design:paramtypes", [feedback_service_1.FeedbackService])
+        ], AddFeedbackComponent);
+        return AddFeedbackComponent;
     }());
-    exports.ApplyCompOffComponent = ApplyCompOffComponent;
+    exports.AddFeedbackComponent = AddFeedbackComponent;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/comp-off.module.ts":
-/*!*****************************************************!*\
-  !*** ./src/app/modules/comp-off/comp-off.module.ts ***!
-  \*****************************************************/
+/***/ "./src/app/modules/employee/feedback/feedback.module.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/feedback.module.ts ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -214,44 +197,43 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js"), __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js"), __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js"), __webpack_require__(/*! ./comp-off.routing */ "./src/app/modules/comp-off/comp-off.routing.ts"), __webpack_require__(/*! ./apply-comp-off/apply-comp-off.component */ "./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.ts"), __webpack_require__(/*! ./list-comp-off/list-comp-off.component */ "./src/app/modules/comp-off/list-comp-off/list-comp-off.component.ts"), __webpack_require__(/*! ./review-comp-off/review-comp-off.component */ "./src/app/modules/comp-off/review-comp-off/review-comp-off.component.ts"), __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js"), __webpack_require__(/*! modules/application-components.module */ "./src/app/modules/application-components.module.ts"), __webpack_require__(/*! modules/application-pipes.module */ "./src/app/modules/application-pipes.module.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, common_1, http_1, forms_1, comp_off_routing_1, apply_comp_off_component_1, list_comp_off_component_1, review_comp_off_component_1, ngx_bootstrap_1, application_components_module_1, application_pipes_module_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js"), __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js"), __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js"), __webpack_require__(/*! ./feedback.routing */ "./src/app/modules/employee/feedback/feedback.routing.ts"), __webpack_require__(/*! modules/application-components.module */ "./src/app/modules/application-components.module.ts"), __webpack_require__(/*! ./list-feedback/list-feedback.component */ "./src/app/modules/employee/feedback/list-feedback/list-feedback.component.ts"), __webpack_require__(/*! ./add-feedback/add-feedback.component */ "./src/app/modules/employee/feedback/add-feedback/add-feedback.component.ts"), __webpack_require__(/*! modules/application-pipes.module */ "./src/app/modules/application-pipes.module.ts"), __webpack_require__(/*! ./review-feedback/review-feedback.component */ "./src/app/modules/employee/feedback/review-feedback/review-feedback.component.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, common_1, http_1, forms_1, feedback_routing_1, application_components_module_1, list_feedback_component_1, add_feedback_component_1, application_pipes_module_1, review_feedback_component_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var CompensatoryOffModule = (function () {
-        function CompensatoryOffModule() {
+    var FeedbackModule = (function () {
+        function FeedbackModule() {
         }
-        CompensatoryOffModule = __decorate([
+        FeedbackModule = __decorate([
             core_1.NgModule({
                 imports: [
-                    comp_off_routing_1.CompensatoryOffRoutingModule,
+                    feedback_routing_1.FeedbackRoutingModule,
                     forms_1.FormsModule,
                     http_1.HttpClientModule,
                     common_1.CommonModule,
-                    ngx_bootstrap_1.BsDatepickerModule,
                     application_components_module_1.ApplicationComponentsModule,
                     application_pipes_module_1.ApplicationPipesModule
                 ],
                 declarations: [
-                    apply_comp_off_component_1.ApplyCompOffComponent,
-                    list_comp_off_component_1.ListCompOffComponent,
-                    review_comp_off_component_1.ReviewCompOffComponent
+                    add_feedback_component_1.AddFeedbackComponent,
+                    list_feedback_component_1.ListFeedbackComponent,
+                    review_feedback_component_1.ReviewFeedbackComponent
                 ],
                 providers: []
             })
-        ], CompensatoryOffModule);
-        return CompensatoryOffModule;
+        ], FeedbackModule);
+        return FeedbackModule;
     }());
-    exports.CompensatoryOffModule = CompensatoryOffModule;
+    exports.FeedbackModule = FeedbackModule;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/comp-off.routing.ts":
-/*!******************************************************!*\
-  !*** ./src/app/modules/comp-off/comp-off.routing.ts ***!
-  \******************************************************/
+/***/ "./src/app/modules/employee/feedback/feedback.routing.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/feedback.routing.ts ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -261,14 +243,14 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js"), __webpack_require__(/*! core/services/authentication.service */ "./src/app/core/services/authentication.service.ts"), __webpack_require__(/*! core/services/authorization.service */ "./src/app/core/services/authorization.service.ts"), __webpack_require__(/*! ./list-comp-off/list-comp-off.component */ "./src/app/modules/comp-off/list-comp-off/list-comp-off.component.ts"), __webpack_require__(/*! ./apply-comp-off/apply-comp-off.component */ "./src/app/modules/comp-off/apply-comp-off/apply-comp-off.component.ts"), __webpack_require__(/*! ./review-comp-off/review-comp-off.component */ "./src/app/modules/comp-off/review-comp-off/review-comp-off.component.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, router_1, authentication_service_1, authorization_service_1, list_comp_off_component_1, apply_comp_off_component_1, review_comp_off_component_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js"), __webpack_require__(/*! core/services/authentication.service */ "./src/app/core/services/authentication.service.ts"), __webpack_require__(/*! core/services/authorization.service */ "./src/app/core/services/authorization.service.ts"), __webpack_require__(/*! ./list-feedback/list-feedback.component */ "./src/app/modules/employee/feedback/list-feedback/list-feedback.component.ts"), __webpack_require__(/*! ./add-feedback/add-feedback.component */ "./src/app/modules/employee/feedback/add-feedback/add-feedback.component.ts"), __webpack_require__(/*! ./review-feedback/review-feedback.component */ "./src/app/modules/employee/feedback/review-feedback/review-feedback.component.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, router_1, authentication_service_1, authorization_service_1, list_feedback_component_1, add_feedback_component_1, review_feedback_component_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     var routes = [
         {
             path: '',
             data: {
-                title: 'Comp-Off'
+                title: 'Feedback'
             },
             children: [
                 {
@@ -277,68 +259,68 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
                 },
                 {
                     path: 'list',
+                    canActivate: [authentication_service_1.AuthenticationGuard, authorization_service_1.AuthorizationGuard],
                     data: {
                         title: 'List',
                         access: {
-                            module: 'compensatory-off',
-                            entity: 'compensatory-off',
+                            module: 'employee',
+                            entity: 'feedback',
                             action: 'find'
                         }
                     },
-                    canActivate: [authentication_service_1.AuthenticationGuard, authorization_service_1.AuthorizationGuard],
-                    component: list_comp_off_component_1.ListCompOffComponent
+                    component: list_feedback_component_1.ListFeedbackComponent
                 },
                 {
-                    path: 'apply',
+                    path: 'add',
                     canActivate: [authentication_service_1.AuthenticationGuard, authorization_service_1.AuthorizationGuard],
                     data: {
-                        title: 'Apply',
+                        title: 'Add',
                         access: {
-                            module: 'compensatory-off',
-                            entity: 'compensatory-off',
+                            module: 'employee',
+                            entity: 'feedback',
                             action: 'create'
                         }
                     },
-                    component: apply_comp_off_component_1.ApplyCompOffComponent
+                    component: add_feedback_component_1.AddFeedbackComponent
                 },
                 {
                     path: 'review',
+                    canActivate: [authentication_service_1.AuthenticationGuard, authentication_service_1.AuthenticationGuard],
                     data: {
                         title: 'Review',
                         access: {
-                            module: 'compensatory-off',
-                            entity: 'compensatory-off',
-                            action: 'find'
+                            module: 'employee',
+                            entity: 'feedback',
+                            action: 'find-review'
                         }
                     },
-                    canActivate: [authentication_service_1.AuthenticationGuard, authorization_service_1.AuthorizationGuard],
-                    component: review_comp_off_component_1.ReviewCompOffComponent
+                    component: review_feedback_component_1.ReviewFeedbackComponent
                 }
             ]
         }
     ];
-    var CompensatoryOffRoutingModule = (function () {
-        function CompensatoryOffRoutingModule() {
+    var FeedbackRoutingModule = (function () {
+        function FeedbackRoutingModule() {
         }
-        CompensatoryOffRoutingModule = __decorate([
+        FeedbackRoutingModule = __decorate([
             core_1.NgModule({
                 imports: [router_1.RouterModule.forChild(routes)],
                 exports: [router_1.RouterModule]
             })
-        ], CompensatoryOffRoutingModule);
-        return CompensatoryOffRoutingModule;
+        ], FeedbackRoutingModule);
+        return FeedbackRoutingModule;
     }());
-    exports.CompensatoryOffRoutingModule = CompensatoryOffRoutingModule;
+    exports.FeedbackRoutingModule = FeedbackRoutingModule;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/comp-off.service.ts":
-/*!******************************************************!*\
-  !*** ./src/app/modules/comp-off/comp-off.service.ts ***!
-  \******************************************************/
+/***/ "./src/app/modules/employee/feedback/feedback.service.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/feedback.service.ts ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -364,85 +346,80 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! core/services/api.service */ "./src/app/core/services/api.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, api_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ReviewedBy = (function () {
-        function ReviewedBy() {
+    var Comment = (function () {
+        function Comment() {
         }
-        return ReviewedBy;
+        return Comment;
     }());
-    ;
-    var ApplyCompOff = (function () {
-        function ApplyCompOff() {
-            this.date = '';
-            this.summary = '';
+    exports.Comment = Comment;
+    var Feedback = (function () {
+        function Feedback() {
         }
-        return ApplyCompOff;
+        return Feedback;
     }());
-    exports.ApplyCompOff = ApplyCompOff;
-    ;
-    var CompOff = (function () {
-        function CompOff() {
-        }
-        return CompOff;
-    }());
-    exports.CompOff = CompOff;
-    var CompensatoryOffService = (function (_super) {
-        __extends(CompensatoryOffService, _super);
-        function CompensatoryOffService() {
+    exports.Feedback = Feedback;
+    var FeedbackService = (function (_super) {
+        __extends(FeedbackService, _super);
+        function FeedbackService() {
             var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this._base_url = '/compoffs';
+            _this._base_url = '/employees/feedbacks';
             return _this;
         }
-        CompensatoryOffService.prototype.apply = function (compOff) {
-            return this.post(this._base_url, compOff)
+        FeedbackService.prototype.postFeedback = function (feedback) {
+            return this.post(this._base_url, feedback)
                 .then(function (response) { return response; });
         };
-        CompensatoryOffService.prototype.getCompOffs = function (query) {
+        FeedbackService.prototype.getFeedbacks = function (query) {
             return this.get(this._base_url, query)
                 .then(function (response) { return response['data']; });
         };
-        CompensatoryOffService.prototype.getReviewCompOffs = function (query) {
+        FeedbackService.prototype.getFeedback = function (feedback_id) {
+            return this.get(this._base_url + '/' + feedback_id)
+                .then(function (response) { return response; });
+        };
+        FeedbackService.prototype.submitComment = function (feedback_id, comment) {
+            return this.put(this._base_url + '/comment/' + feedback_id, { comment: comment })
+                .then(function (response) { return response; });
+        };
+        FeedbackService.prototype.getReviewFeedbacks = function (query) {
             return this.get(this._base_url + '?review=true', query)
                 .then(function (response) { return response['data']; });
         };
-        CompensatoryOffService.prototype.approve = function (comp_off_id) {
-            return this.patch(this._base_url + '/review/' + comp_off_id, {})
+        FeedbackService.prototype.getReviewFeedback = function (feedback_id) {
+            return this.get(this._base_url + '/' + feedback_id + '?review=true')
                 .then(function (response) { return response; });
         };
-        CompensatoryOffService.prototype.reject = function (comp_off_id) {
-            return this.put(this._base_url + '/review/' + comp_off_id, {})
+        FeedbackService.prototype.submitReviewComment = function (feedback_id, comment) {
+            return this.put(this._base_url + '/comment/' + feedback_id + '?review=true', { comment: comment })
                 .then(function (response) { return response; });
         };
-        CompensatoryOffService.prototype.cancel = function (compoff_id) {
-            return this.delete(this._base_url + '/' + compoff_id)
-                .then(function (response) { return response; });
-        };
-        CompensatoryOffService = __decorate([
+        FeedbackService = __decorate([
             core_1.Injectable()
-        ], CompensatoryOffService);
-        return CompensatoryOffService;
+        ], FeedbackService);
+        return FeedbackService;
     }(api_service_1.Api));
-    exports.CompensatoryOffService = CompensatoryOffService;
+    exports.FeedbackService = FeedbackService;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/list-comp-off/list-comp-off.component.html":
-/*!*****************************************************************************!*\
-  !*** ./src/app/modules/comp-off/list-comp-off/list-comp-off.component.html ***!
-  \*****************************************************************************/
+/***/ "./src/app/modules/employee/feedback/list-feedback/list-feedback.component.html":
+/*!**************************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/list-feedback/list-feedback.component.html ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row mb-4\">\n            <div class=\"col-12 text-right\">\n              <button class=\"btn btn-primary mr-1\" type=\"button\" routerLink=\"/comp-off/review\" *ngIf=\"reviewAllowed\">+ Review Comp-Off(s)</button>\n              <button class=\"btn btn-primary\" type=\"button\" routerLink=\"/comp-off/apply\" *ngIf=\"applyAllowed\">+ Apply Comp-Off</button>\n            </div>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"loading\">\n            <h3><i class=\"fa fa-refresh fa-spin\"></i> Loading Compensatory-Offs</h3>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"!loading && compoffs.length == 0\">\n            <h3>No Compensatory-Off applied</h3>\n          </div>\n\n          <table class=\"table table-striped\" *ngIf=\"!loading && compoffs.length > 0\">\n            <thead>\n              <tr>\n                <th>#</th>\n                <th>Date</th>\n                <th>Summary</th>\n                <th>Reviewed By</th>\n                <th>Expiry Date</th>\n                <th>Status</th>\n                <th></th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let compoff of compoffs; let i = index\">\n                <td>{{i+1}}.</td>\n                <td>{{compoff.date | date: 'dd-MM-yyyy'}}</td>\n                <td>{{compoff.summary}}</td>\n                <td>\n                  <span *ngIf=\"compoff.reviewed_by\">{{compoff.reviewed_by.name}}</span>\n                </td>\n                <td>\n                  <span *ngIf=\"compoff.expiry_date\">{{compoff.expiry_date | date: 'dd-MM-yyyy'}}</span>\n                </td>\n                <td>\n                  <span class=\"badge\" [ngClass]=\"getStatusBadge(compoff.comp_off_status)\">{{compoff.comp_off_status | constants: 'compensatory_off.status'}}</span>\n                </td>\n                <td>\n\n                  <button *ngIf=\"compoff.comp_off_status === 1\" type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"cancelCompOff(i)\" [disabled]=\"cancelling[i]\">\n                    <span class=\"fa fa-spinner fa-spin\" *ngIf=\"cancelling[i]\"></span>&nbsp;Cancel\n                  </button>\n\n                </td>\n              </tr>\n            </tbody>\n          </table>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row mb-4\">\n            <div class=\"col-12 text-right\">\n              <button class=\"btn btn-primary mr-1\" type=\"button\" routerLink=\"/employee/feedback/review\" *ngIf=\"reviewAllowed\">+\n                Review Feedback(s)</button>\n              <button class=\"btn btn-primary\" role='button' type=\"button\" routerLink=\"/employee/feedback/add\">+\n                Add Feedback</button>\n            </div>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"feedbacks.length === 0\">\n            <h3>No feedbacks have been given</h3>\n          </div>\n\n          <div class=\"row\">\n\n            <div [ngClass]=\"{'col-12': !commentOpened, 'col-7': commentOpened}\">\n              <table class=\"table table-striped\" *ngIf=\"feedbacks.length > 0\">\n                <thead>\n                  <tr>\n                    <th>Feedback</th>\n                    <th>Anonymous</th>\n                    <th>Status</th>\n                    <th></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let feedback of feedbacks; let i = index\" (click)=\"openFeedback(feedback._id)\">\n                    <td>{{feedback.feedback}}</td>\n                    <td>{{feedback.is_anonymous ? \"Yes\" : \"No\"}}</td>\n                    <td>\n                      <span class=\"badge\">{{'feedback.status.' + feedback.feedback_status | constants}}</span>\n                    </td>\n                    <td>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n            <div *ngIf=\"commentOpened\" class=\"comment-container rounded border col-5\">\n\n              <div class=\"row\">\n                <div class=\"col-12 text-right\">\n                  <button class=\"btn btn-link\" (click)=\"closeFeedback()\">Close</button>\n                </div>\n              </div>\n\n              <div class=\"comments\" *ngIf=\"feedback_details.comments && feedback_details.comments.length > 0\">\n                <div *ngFor=\"let comment of feedback_details.comments\" class=\"alert col-11\" [ngClass]=\"{'alert-secondary pull-left': !comment.is_review, 'alert-dark pull-right text-right': comment.is_review}\">\n                  <p class=\"mb-2 comment text-left\">{{comment.comment}}</p>\n                  <small>\n                    {{comment.name}}, {{comment.commented_at | date:'medium'}}\n                  </small>\n                </div>\n              </div>\n              <div *ngIf=\"!feedback_details.comments || feedback_details.comments.length == 0\">\n                <h3 class=\"text-center mt-5\">No Comments on feedback</h3>\n              </div>\n\n              <div class=\"row\">\n                <div class=\"col-12 feedback-comment p-0\">\n                  <div class=\"input-group feedback-comment\">\n                    <textarea name=\"feedback\" class=\"form-control\" id=\"comment\" [(ngModel)]=\"comment\"></textarea>\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-primary\" type=\"button\" (click)=\"submitComment()\">Submit</button>\n                    </div>\n                  </div>\n                </div>\n              </div>\n\n            </div>\n\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/list-comp-off/list-comp-off.component.ts":
-/*!***************************************************************************!*\
-  !*** ./src/app/modules/comp-off/list-comp-off/list-comp-off.component.ts ***!
-  \***************************************************************************/
+/***/ "./src/app/modules/employee/feedback/list-feedback/list-feedback.component.ts":
+/*!************************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/list-feedback/list-feedback.component.ts ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -490,112 +467,109 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! modules/comp-off/comp-off.service */ "./src/app/modules/comp-off/comp-off.service.ts"), __webpack_require__(/*! config/constants/compensatory-off */ "./src/app/config/constants/compensatory-off.ts"), __webpack_require__(/*! core/providers/access.service */ "./src/app/core/providers/access.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, comp_off_service_1, compensatory_off_1, access_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! modules/employee/feedback/feedback.service */ "./src/app/modules/employee/feedback/feedback.service.ts"), __webpack_require__(/*! shared/components/error-modal/error-modal.component */ "./src/app/shared/components/error-modal/error-modal.component.ts"), __webpack_require__(/*! core/providers/access.service */ "./src/app/core/providers/access.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, feedback_service_1, error_modal_component_1, access_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ListCompOffComponent = (function () {
-        function ListCompOffComponent(compOffService, access) {
-            this.compOffService = compOffService;
+    var ListFeedbackComponent = (function () {
+        function ListFeedbackComponent(feedbackService, access) {
+            this.feedbackService = feedbackService;
             this.access = access;
-            this.compoffs = [];
-            this.applyAllowed = false;
+            this.feedbacks = [];
             this.reviewAllowed = false;
-            this.loading = false;
-            this.cancelling = new Array();
+            this.commentOpened = false;
         }
-        ListCompOffComponent.prototype.ngOnInit = function () {
+        ListFeedbackComponent.prototype.ngOnInit = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var _a, _b;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
+                var _a;
+                return __generator(this, function (_b) {
+                    switch (_b.label) {
                         case 0:
+                            this.loadFeedbacks();
                             _a = this;
                             return [4, this.access.hasAccess({
-                                    module: 'compensatory-off',
-                                    entity: 'compensatory-off',
-                                    action: 'create'
-                                })];
-                        case 1:
-                            _a.applyAllowed = _c.sent();
-                            _b = this;
-                            return [4, this.access.hasAccess({
-                                    module: 'compensatory-off',
-                                    entity: 'compensatory-off',
+                                    module: 'employee',
+                                    entity: 'feedback',
                                     action: 'review'
                                 })];
-                        case 2:
-                            _b.reviewAllowed = _c.sent();
-                            this.loadCompOffs();
+                        case 1:
+                            _a.reviewAllowed = _b.sent();
                             return [2];
                     }
                 });
             });
         };
-        ListCompOffComponent.prototype.loadCompOffs = function () {
+        ListFeedbackComponent.prototype.loadFeedbacks = function () {
             var self = this;
-            this.loading = true;
-            this.compOffService.getCompOffs().then(function (compoffs) {
-                self.loading = false;
-                self.compoffs = compoffs;
+            this.feedbackService.getFeedbacks().then(function (feedbacks) {
+                self.feedbacks = feedbacks;
             });
         };
-        ListCompOffComponent.prototype.cancelCompOff = function (index) {
-            var leave_id = this.compoffs[index]._id;
+        ListFeedbackComponent.prototype.openFeedback = function (feedback_id) {
             var self = this;
-            this.cancelling[index] = true;
-            this.compOffService.cancel(leave_id).then(function (response) {
-                self.compoffs[index].comp_off_status = compensatory_off_1.STATUS.DELETED;
-                self.cancelling[index] = false;
+            this.feedbackService.getFeedback(feedback_id).then(function (feedback) {
+                self.commentOpened = true;
+                self.feedback_details = feedback;
             });
         };
-        ListCompOffComponent.prototype.getStatusBadge = function (status) {
-            switch (status) {
-                case 2:
-                case 5:
-                    return 'badge-success';
-                case 3:
-                    return 'badge-danger';
-                case 4:
-                case 6:
-                    return 'badge-dark';
-                default:
-                    return 'badge-default';
-            }
+        ListFeedbackComponent.prototype.closeFeedback = function () {
+            this.commentOpened = false;
+            this.feedback_details = undefined;
         };
-        ListCompOffComponent = __decorate([
+        ListFeedbackComponent.prototype.submitComment = function () {
+            var _this = this;
+            var feedback_id = this.feedback_details._id;
+            this.feedbackService.submitComment(feedback_id, this.comment).then(function (data) {
+                _this.feedback_details.comments.push({
+                    user_id: _this.feedback_details.user_id,
+                    name: _this.feedback_details.name,
+                    comment: _this.comment,
+                    commented_at: (new Date()).toString(),
+                    is_review: false
+                });
+                _this.comment = '';
+            }).catch(function (err) {
+                console.log(err);
+                _this.error = err.error.message.text;
+                _this.errorModal.show();
+            });
+        };
+        __decorate([
+            core_1.ViewChild('errorModal'),
+            __metadata("design:type", error_modal_component_1.ErrorModalComponent)
+        ], ListFeedbackComponent.prototype, "errorModal", void 0);
+        ListFeedbackComponent = __decorate([
             core_1.Component({
-                selector: 'app-list-comp-off',
-                template: __webpack_require__(/*! ./list-comp-off.component.html */ "./src/app/modules/comp-off/list-comp-off/list-comp-off.component.html"),
-                encapsulation: core_1.ViewEncapsulation.None,
-                providers: [comp_off_service_1.CompensatoryOffService]
+                selector: 'app-list-feedback',
+                template: __webpack_require__(/*! ./list-feedback.component.html */ "./src/app/modules/employee/feedback/list-feedback/list-feedback.component.html"),
+                providers: [feedback_service_1.FeedbackService]
             }),
-            __metadata("design:paramtypes", [comp_off_service_1.CompensatoryOffService,
+            __metadata("design:paramtypes", [feedback_service_1.FeedbackService,
                 access_service_1.Access])
-        ], ListCompOffComponent);
-        return ListCompOffComponent;
+        ], ListFeedbackComponent);
+        return ListFeedbackComponent;
     }());
-    exports.ListCompOffComponent = ListCompOffComponent;
+    exports.ListFeedbackComponent = ListFeedbackComponent;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/review-comp-off/review-comp-off.component.html":
-/*!*********************************************************************************!*\
-  !*** ./src/app/modules/comp-off/review-comp-off/review-comp-off.component.html ***!
-  \*********************************************************************************/
+/***/ "./src/app/modules/employee/feedback/review-feedback/review-feedback.component.html":
+/*!******************************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/review-feedback/review-feedback.component.html ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row mb-4\">\n            <div class=\"col-12 text-right\">\n              <button class=\"btn btn-link\" type=\"button\" routerLink=\"/comp-off/list\">Back</button>\n            </div>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"loading\">\n            <h3><i class=\"fa fa-refresh fa-spin\"></i> Loading compensatory-off for review</h3>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"!loading && compoffs.length == 0\">\n            <h3>No Compensatory-Offs to review</h3>\n          </div>\n\n          <table class=\"table table-striped\" *ngIf=\"!loading && compoffs.length > 0\">\n            <thead>\n              <tr>\n                <th>#</th>\n                <th>Employee</th>\n                <th>Date</th>\n                <th>Summary</th>\n                <th></th>\n              </tr>\n            </thead>\n            <tbody>\n              <tr *ngFor=\"let compoff of compoffs; let i = index\">\n                <td>{{i+1}}.</td>\n                <td>{{compoff.name}}</td>\n                <td>{{compoff.date | date: 'dd-MM-yyyy'}}</td>\n                <td>{{compoff.summary}}</td>\n                <td>\n\n                  <div *ngIf=\"!reviewed[compoff._id]\">\n                    <button type=\"button\" class=\"btn btn-success btn-sm mr-1\" (click)=\"approve(compoff._id)\" [disabled]=\"approving[compoff._id] || rejecting[compoff._id]\" *ngIf=\"approveAllowed\">\n                      <span class=\"fa fa-spinner\" [ngClass]=\"{'fa-spin': approving[compoff._id]}\" *ngIf=\"approving[compoff._id]\"></span>\n                      &nbsp;Approve\n                    </button>\n\n                    <button type=\"button\" class=\"btn btn-danger btn-sm\" (click)=\"reject(compoff._id)\" [disabled]=\"approving[compoff._id] || rejecting[compoff._id]\" *ngIf=\"rejectAllowed\">\n                      <span class=\"fa fa-spinner\" [ngClass]=\"{'fa-spin': rejecting[compoff._id]}\" *ngIf=\"rejecting[compoff._id]\"></span>\n                      &nbsp;Reject\n                    </button>\n                  </div>\n\n                </td>\n              </tr>\n            </tbody>\n          </table>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"row\">\n    <div class=\"col-12\">\n      <div class=\"card\">\n        <div class=\"card-body\">\n\n          <div class=\"row mb-4\">\n            <div class=\"col-12 text-right\">\n              <button class=\"btn btn-link\" type=\"button\" routerLink=\"/employee/feedback/list\">Back</button>\n            </div>\n          </div>\n\n          <div class=\"text-center m-5\" *ngIf=\"feedbacks.length === 0\">\n            <h3>No feedbacks to review</h3>\n          </div>\n\n          <div class=\"row\">\n\n            <div [ngClass]=\"{'col-12': !commentOpened, 'col-7': commentOpened}\">\n              <table class=\"table table-striped\" *ngIf=\"feedbacks.length > 0\">\n                <thead>\n                  <tr>\n                    <th>#</th>\n                    <th>Given By</th>\n                    <th>Feedback</th>\n                    <th>Status</th>\n                    <th></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let feedback of feedbacks; let i = index\" (click)=\"openFeedback(feedback._id)\">\n                    <td>{{i+1}}.</td>\n                    <td>{{feedback.name}}</td>\n                    <td>{{feedback.feedback}}</td>\n                    <td>\n                      <span class=\"badge\">{{'feedback.status.' + feedback.feedback_status | constants}}</span>\n                    </td>\n                    <td>\n                    </td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n            <div *ngIf=\"commentOpened\" class=\"comment-container rounded border col-5\">\n\n              <div class=\"row\">\n                <div class=\"col-12 text-right\">\n                  <button class=\"btn btn-link\" (click)=\"closeFeedback()\">Close</button>\n                </div>\n              </div>\n\n              <div class=\"comments\" *ngIf=\"feedback_details.comments && feedback_details.comments.length > 0\">\n                <div *ngFor=\"let comment of feedback_details.comments\" class=\"alert col-11\" [ngClass]=\"{'alert-secondary pull-left': !comment.is_review, 'alert-dark pull-right text-right': comment.is_review}\">\n                  <p class=\"mb-2 comment text-left\">{{comment.comment}}</p>\n                  <small>\n                    {{comment.name}}, {{comment.commented_at | date:'medium'}}\n                  </small>\n                </div>\n              </div>\n              <div *ngIf=\"!feedback_details.comments || feedback_details.comments.length == 0\">\n                <h3 class=\"text-center mt-5\">No Comments on feedback</h3>\n              </div>\n\n              <div class=\"row\">\n                <div class=\"col-12 feedback-comment p-0\">\n                  <div class=\"input-group feedback-comment\">\n                    <textarea name=\"feedback\" class=\"form-control\" id=\"comment\" [(ngModel)]=\"comment\"></textarea>\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-primary\" type=\"button\" (click)=\"submitComment()\">Submit</button>\n                    </div>\n                  </div>\n                </div>\n              </div>\n\n            </div>\n\n          </div>\n\n        </div>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
-/***/ "./src/app/modules/comp-off/review-comp-off/review-comp-off.component.ts":
-/*!*******************************************************************************!*\
-  !*** ./src/app/modules/comp-off/review-comp-off/review-comp-off.component.ts ***!
-  \*******************************************************************************/
+/***/ "./src/app/modules/employee/feedback/review-feedback/review-feedback.component.ts":
+/*!****************************************************************************************!*\
+  !*** ./src/app/modules/employee/feedback/review-feedback/review-feedback.component.ts ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -643,86 +617,76 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! config/constants/leave */ "./src/app/config/constants/leave.ts"), __webpack_require__(/*! ../comp-off.service */ "./src/app/modules/comp-off/comp-off.service.ts"), __webpack_require__(/*! core/providers/access.service */ "./src/app/core/providers/access.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, leave_1, comp_off_service_1, access_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js"), __webpack_require__(/*! modules/employee/feedback/feedback.service */ "./src/app/modules/employee/feedback/feedback.service.ts"), __webpack_require__(/*! shared/components/error-modal/error-modal.component */ "./src/app/shared/components/error-modal/error-modal.component.ts"), __webpack_require__(/*! core/providers/user.service */ "./src/app/core/providers/user.service.ts")], __WEBPACK_AMD_DEFINE_RESULT__ = (function (require, exports, core_1, feedback_service_1, error_modal_component_1, user_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ReviewCompOffComponent = (function () {
-        function ReviewCompOffComponent(compoffService, access) {
-            this.compoffService = compoffService;
-            this.access = access;
-            this.compoffs = [];
-            this.loading = false;
-            this.reviewed = [];
-            this.approving = [];
-            this.rejecting = [];
+    var ReviewFeedbackComponent = (function () {
+        function ReviewFeedbackComponent(feedbackService, user) {
+            this.feedbackService = feedbackService;
+            this.user = user;
+            this.feedbacks = [];
+            this.commentOpened = false;
         }
-        ReviewCompOffComponent.prototype.ngOnInit = function () {
+        ReviewFeedbackComponent.prototype.ngOnInit = function () {
             return __awaiter(this, void 0, void 0, function () {
-                var _a, _b;
-                return __generator(this, function (_c) {
-                    switch (_c.label) {
-                        case 0:
-                            this.loadCompOffs();
-                            _a = this;
-                            return [4, this.access.hasAccess({
-                                    module: 'compensatory-off',
-                                    entity: 'review',
-                                    action: 'approve'
-                                })];
-                        case 1:
-                            _a.approveAllowed = _c.sent();
-                            _b = this;
-                            return [4, this.access.hasAccess({
-                                    module: 'compensatory-off',
-                                    entity: 'review',
-                                    action: 'reject'
-                                })];
-                        case 2:
-                            _b.rejectAllowed = _c.sent();
-                            return [2];
-                    }
+                return __generator(this, function (_a) {
+                    this.loadFeedbacks();
+                    return [2];
                 });
             });
         };
-        ReviewCompOffComponent.prototype.loadCompOffs = function () {
+        ReviewFeedbackComponent.prototype.loadFeedbacks = function () {
             var self = this;
-            var query = new Map();
-            query.set('comp_off_status', leave_1.STATUS.APPLIED);
-            this.loading = true;
-            this.compoffService.getReviewCompOffs(query).then(function (compoffs) {
-                self.loading = false;
-                self.compoffs = compoffs;
+            this.feedbackService.getReviewFeedbacks().then(function (feedbacks) {
+                self.feedbacks = feedbacks;
             });
         };
-        ReviewCompOffComponent.prototype.approve = function (comp_off_id) {
+        ReviewFeedbackComponent.prototype.openFeedback = function (feedback_id) {
+            var self = this;
+            this.feedbackService.getReviewFeedback(feedback_id).then(function (feedback) {
+                self.commentOpened = true;
+                self.feedback_details = feedback;
+            });
+        };
+        ReviewFeedbackComponent.prototype.closeFeedback = function () {
+            this.commentOpened = false;
+            this.feedback_details = undefined;
+        };
+        ReviewFeedbackComponent.prototype.submitComment = function () {
             var _this = this;
-            this.approving[comp_off_id] = true;
-            this.compoffService.approve(comp_off_id).then(function (response) {
-                _this.reviewed[comp_off_id] = true;
-                _this.approving[comp_off_id] = false;
+            var feedback_id = this.feedback_details._id;
+            this.feedbackService.submitReviewComment(feedback_id, this.comment).then(function (data) {
+                var app_user = _this.user;
+                _this.feedback_details.comments.push({
+                    user_id: app_user.user_id,
+                    name: app_user.name,
+                    comment: _this.comment,
+                    commented_at: (new Date()).toString(),
+                    is_review: true
+                });
+                _this.comment = '';
+            }).catch(function (err) {
+                console.log(err);
+                _this.error = err.error.message.text;
+                _this.errorModal.show();
             });
         };
-        ReviewCompOffComponent.prototype.reject = function (comp_off_id) {
-            var _this = this;
-            this.rejecting[comp_off_id] = true;
-            this.compoffService.reject(comp_off_id).then(function (response) {
-                _this.reviewed[comp_off_id] = true;
-                _this.rejecting[comp_off_id] = false;
-            });
-        };
-        ReviewCompOffComponent = __decorate([
+        __decorate([
+            core_1.ViewChild('errorModal'),
+            __metadata("design:type", error_modal_component_1.ErrorModalComponent)
+        ], ReviewFeedbackComponent.prototype, "errorModal", void 0);
+        ReviewFeedbackComponent = __decorate([
             core_1.Component({
-                selector: 'app-review-comp-off',
-                template: __webpack_require__(/*! ./review-comp-off.component.html */ "./src/app/modules/comp-off/review-comp-off/review-comp-off.component.html"),
-                encapsulation: core_1.ViewEncapsulation.None,
-                providers: [comp_off_service_1.CompensatoryOffService]
+                selector: 'app-review-feedback',
+                template: __webpack_require__(/*! ./review-feedback.component.html */ "./src/app/modules/employee/feedback/review-feedback/review-feedback.component.html"),
+                providers: [feedback_service_1.FeedbackService]
             }),
-            __metadata("design:paramtypes", [comp_off_service_1.CompensatoryOffService,
-                access_service_1.Access])
-        ], ReviewCompOffComponent);
-        return ReviewCompOffComponent;
+            __metadata("design:paramtypes", [feedback_service_1.FeedbackService,
+                user_service_1.User])
+        ], ReviewFeedbackComponent);
+        return ReviewFeedbackComponent;
     }());
-    exports.ReviewCompOffComponent = ReviewCompOffComponent;
+    exports.ReviewFeedbackComponent = ReviewFeedbackComponent;
 }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -749,6 +713,9 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         function ConstantsArrayPipe() {
         }
         ConstantsArrayPipe.prototype.transform = function (value, args) {
+            if (typeof value === 'undefined' || value === null) {
+                return [];
+            }
             value = Object.keys(value).map(function (key) {
                 if (!Number.isNaN(Number.parseInt(key))) {
                     if (value[value[key]] !== undefined) {
@@ -833,4 +800,4 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 /***/ })
 
 }]);
-//# sourceMappingURL=7.028b4ebadce75c8be55e.js.map
+//# sourceMappingURL=8.87c1fe70d94a5ee1b818.js.map
