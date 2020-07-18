@@ -1,0 +1,9 @@
+- name: data-structures-js
+  url: https://www.npmjs.com/package/data-structures-js
+  description: Some Basic Data Structures for use in JavaScript.
+  status: in progress
+  tags:
+    - JavaScript
+    - Data Structures
+  icon: github
+  image: images/data-structures.jpg

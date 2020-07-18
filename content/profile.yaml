@@ -1,0 +1,29 @@
+- profile:
+  initials: Mr.
+  name: Rohit Aggarwal
+  email: er.rohitaggarwal1989@gmail.com
+  profession: Full-Stack Developer
+  image: images/profile.jpg
+  location: Gurgaon, India
+  relocation: true
+  company: ChargePoint, Inc.
+  for_hire: true
+  focus: Learning Docker + Kubernetes
+  focus_url: https://docker.com
+  about: |
+    Dedicated Full-Stack developer with a knack for Backend. Experienced in multiple databases, technologies & domains.
+
+    Refactoring for optimisation and maintainability has become a bad habit and finding patterns in large datasets has become a second nature. Having worked in various industry domains and multiple technologies (both languages and databases) has given me a different perspective of what fits where and what an application needs at a given point in time.
+  skills:
+    - PHP
+    - Java + SpringBoot
+    - JavaScript + NodeJS
+  tools:
+    - IntelliJ
+    - VSCode
+    - Compass
+  budget:
+    currency: $
+    min: 5
+    max: 30
+    default: 10
