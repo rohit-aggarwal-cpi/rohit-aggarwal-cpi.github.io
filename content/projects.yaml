@@ -1,9 +1,20 @@
 - name: data-structures-js
   url: https://www.npmjs.com/package/data-structures-js
   description: Some Basic Data Structures for use in JavaScript.
-  status: in progress
+  status: defunct
   tags:
     - JavaScript
     - Data Structures
   icon: github
   image: images/data-structures.jpg
+
+- name: artvave
+  url: https://github.com/rohit-aggarwal-cpi/artvave
+  description: E-Commerce website for Artworks, Handicrafts and collectibles. It has an admin and a seller component too.
+  status:  defunct
+  tags:
+    - PHP
+    - MySQL
+    - Angular
+  icon: github
+  image: images/artvave.png
