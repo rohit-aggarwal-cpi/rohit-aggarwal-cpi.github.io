@@ -4,12 +4,12 @@
   email: er.rohitaggarwal1989@gmail.com
   profession: Full-Stack Developer
   image: images/profile.jpg
-  location: Gurgaon, India
+  location: Bangalore, India
   relocation: true
-  company: ChargePoint, Inc.
-  for_hire: true
-  focus: Learning Docker + Kubernetes
-  focus_url: https://docker.com
+  company: Tekion Corp.
+  for_hire: false
+  focus: Learning Kubernetes + Terraform
+  focus_url: https://kubernetes.io/
   about: |
     Dedicated Full-Stack developer with a knack for Backend. Experienced in multiple databases, technologies & domains.
 

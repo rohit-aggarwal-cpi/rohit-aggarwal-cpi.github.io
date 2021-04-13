@@ -1,5 +1,5 @@
 {
-  "name": "rohit-aggarwal-cpi.github.io",
+  "name": "rohit-agg.github.io",
   "version": "1.0.0",
   "description": "Portfolio website using Gatsby and Intro",
   "main": "gatsby-config.js",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:rohit-aggarwal-cpi/rohit-aggarwal-cpi.github.io.git"
+    "url": "git@github.com:rohit-agg/rohit-agg.github.io.git"
   },
   "author": {
     "name": "Rohit Aggarwal",
@@ -27,7 +27,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rohit-aggarwal-cpi/rohit-aggarwal-cpi.github.io/issues"
+    "url": "https://github.com/rohit-agg/rohit-agg.github.io/issues"
   },
-  "homepage": "https://github.com/rohit-aggarwal-cpi/rohit-aggarwal-cpi.github.io#readme"
+  "homepage": "https://github.com/rohit-agg/rohit-agg.github.io#readme"
 }
